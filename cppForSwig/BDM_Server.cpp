@@ -1546,8 +1546,12 @@ shared_ptr<Message> BDV_Server_Object::processCommand(
 
       //create response object
       auto response = make_shared<::Codec_CommonTypes::ManyBinaryDataAndHeight>();
+
+      std::cerr << "SpentnessForOutputs, size: " << hashes.size() << std::endl;
+
       for (auto& hashPair : hashes)
       {
+         std::cerr << "data size: " << hashPair.first.getSize() << " height: " << hashPair.second << std::endl;
          auto val = response->add_value();
          val->set_data(hashPair.first.getPtr(), hashPair.first.getSize());
          val->set_height(hashPair.second);
@@ -1662,8 +1666,13 @@ shared_ptr<Message> BDV_Server_Object::processCommand(
       
       //create response object
       auto response = make_shared<::Codec_CommonTypes::ManyBinaryDataAndHeight>();
+
+      std::cerr << "getSpentnessForZcOutputs, size: " << hashes.size() << std::endl;
+
       for (auto& hashPair : hashes)
       {
+         std::cerr << "data size: " << hashPair.first.getSize() << " height: " << hashPair.second << std::endl;
+
          auto val = response->add_value();
          val->set_data(hashPair.first.getPtr(), hashPair.first.getSize());
          val->set_height(hashPair.second);
