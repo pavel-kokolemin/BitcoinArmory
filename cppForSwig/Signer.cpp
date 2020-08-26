@@ -939,6 +939,7 @@ void ScriptSpender::merge(const ScriptSpender& obj)
    isP2SH_ |= obj.isP2SH_;
    isCLTV_ |= obj.isCLTV_;
    isCSV_  |= obj.isCSV_;
+   sequence_ = obj.sequence_;
 
    //legacy stack
    if (legacyStatus_ != SpenderStatus_Signed)
